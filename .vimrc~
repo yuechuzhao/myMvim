@@ -44,7 +44,7 @@ if v:progname =~? "evim"
 endif
 
 
-set history=400		" keep 50 lines of command line history
+set history=1000		" keep 1000 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -267,6 +267,7 @@ map <F5> :NERDTreeToggle<CR>
 noremap <C-W><C-U> :CtrlPMRU<CR>
 nnoremap <C-W>u :CtrlPMRU<CR>
 nmap <C-P>d :CtrlP 
+nmap <C-P>h :CtrlP ~/<CR>
 
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.rvm$'
 let g:ctrlp_working_path_mode=0

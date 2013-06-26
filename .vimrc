@@ -44,7 +44,7 @@ if v:progname =~? "evim"
 endif
 
 
-set history=400		" keep 50 lines of command line history
+set history=1000		" keep 1000 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -153,6 +153,7 @@ Bundle 'TagBar'
 Bundle 'ctrlp.vim'
 Bundle "pangloss/vim-javascript"
 Bundle 'Syntastic'
+Bundle 'sudo.vim'
 
 " non github repos ，非git的访问地址的，格式如下：  
 Bundle 'git://git.wincent.com/command-t.git'  
