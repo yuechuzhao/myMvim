@@ -120,9 +120,12 @@ endif
 " remove change the following statements
 set backspace=1		" more powerful backspacing
 " 默认4个空格
-set ts=4
-set noexpandtab
+set softtabstop=4   " 统一缩进为4  
+set sw=4            " 自动缩进的时候， 缩进尺寸为 4 个空格。   
+set ts=4            " Tab 宽度为 4 个字符。  
+set expandtab
 set wildmenu
+set smarttab
 " Popup a window showing all matching command above command line when autocomplete.
 autocmd FileType python setlocal et sta sw=4 sts=4
 
@@ -153,7 +156,7 @@ Bundle 'TagBar'
 Bundle 'ctrlp.vim'
 Bundle "pangloss/vim-javascript"
 Bundle 'Syntastic'
-Bundle 'sudo.vim'
+Bundle 'Markdown'
 
 " non github repos ，非git的访问地址的，格式如下：  
 Bundle 'git://git.wincent.com/command-t.git'  

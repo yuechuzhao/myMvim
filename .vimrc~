@@ -121,7 +121,7 @@ endif
 set backspace=1		" more powerful backspacing
 " 默认4个空格
 set ts=4
-set noexpandtab
+set expandtab
 set wildmenu
 " Popup a window showing all matching command above command line when autocomplete.
 autocmd FileType python setlocal et sta sw=4 sts=4
@@ -153,6 +153,7 @@ Bundle 'TagBar'
 Bundle 'ctrlp.vim'
 Bundle "pangloss/vim-javascript"
 Bundle 'Syntastic'
+Bundle 'Markdown'
 
 " non github repos ，非git的访问地址的，格式如下：  
 Bundle 'git://git.wincent.com/command-t.git'  
