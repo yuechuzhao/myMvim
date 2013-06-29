@@ -156,7 +156,7 @@ filetype plugin indent on     " required!
 
 set rtp+=/Users/orca/.vim/bundle/powerline/powerline/bindings/vim
 set laststatus=2
-set noshowmodemajutsushi/tagbar
+set noshowmode
 
 " 用空格键来开关折叠
 set foldenable
