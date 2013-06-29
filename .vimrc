@@ -123,11 +123,10 @@ Bundle 'gmarik/vundle'
 "
 Bundle 'L9'  
 Bundle 'Lokaltog/powerline'
-Bundle 'neocomplcache'
 Bundle 'neosnippet'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'TagBar'
+Bundle 'Tagbar'
 Bundle 'ctrlp.vim'
 Bundle "pangloss/vim-javascript"
 " 语法
