@@ -1,31 +1,5 @@
 set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-
-set diffexpr=MyDiff()
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
 "
 " An example for a vimrc file.
 "
@@ -120,9 +94,12 @@ endif
 " remove change the following statements
 set backspace=1		" more powerful backspacing
 " 默认4个空格
-set ts=4
+set softtabstop=4   " 统一缩进为4  
+set sw=4            " 自动缩进的时候， 缩进尺寸为 4 个空格。   
+set ts=4            " Tab 宽度为 4 个字符。  
 set expandtab
 set wildmenu
+set smarttab
 " Popup a window showing all matching command above command line when autocomplete.
 autocmd FileType python setlocal et sta sw=4 sts=4
 
@@ -152,8 +129,12 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'TagBar'
 Bundle 'ctrlp.vim'
 Bundle "pangloss/vim-javascript"
+" 语法
 Bundle 'Syntastic'
 Bundle 'Markdown'
+Bundle 'Zenburn'
+Bundle 'jellybeans.vim'
+Bundle 'jsbeautify'
 
 " non github repos ，非git的访问地址的，格式如下：  
 Bundle 'git://git.wincent.com/command-t.git'  
@@ -353,7 +334,7 @@ endif
 endf
 
 
-"在所有模式下都允许使用鼠标，还可以是n,v,i,c等  
+"在所有模式下都允许使用鼠标，还可以是n,v,i,c等
 set mouse=a  
   
 if has("multi_byte")  
@@ -388,8 +369,8 @@ if has('gui_running')
     set cursorline  
   
     " 编辑器配色  
-    "colorscheme zenburn  
-    colorscheme distinguished  
+    colorscheme jellybeans  
+    "colorscheme distinguished  
   
     if has("unix") && !has('gui_macvim')  
         set guifont=Courier\ 16\ Pitch\ 16  
