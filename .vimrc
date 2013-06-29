@@ -465,7 +465,7 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
-noremap <expr><space>  pumvisible() ? neocomplcache#close_popup() . "\<SPACE>" : "\<SPACE>"
+inoremap <expr><space>  pumvisible() ? neocomplcache#close_popup() . "\<SPACE>" : "\<SPACE>"
 
 " For cursor moving in insert mode(Not recommended)
 "inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
