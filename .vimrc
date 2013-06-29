@@ -94,6 +94,8 @@ endif
 " Normally we use vim-extensions. If you want true vi-compatibility
 " remove change the following statements
 set backspace=1		" more powerful backspacing
+set backspace=eol,start,indent
+
 " 默认4个空格
 set softtabstop=4   " 统一缩进为4  
 set sw=4            " 自动缩进的时候， 缩进尺寸为 4 个空格。   
@@ -105,6 +107,12 @@ set smarttab
 autocmd FileType python setlocal et sta sw=4 sts=4
 
 set number
+
+"强迫自己用 hjkl
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
 
 " Don't write backup file if vim is being called by "crontab -e"
 au BufWrite /private/tmp/crontab.* set nowritebackup
@@ -129,16 +137,19 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'Tagbar'
 Bundle 'ctrlp.vim'
 Bundle "pangloss/vim-javascript"
-" 语法
-Bundle 'Syntastic'
+
 Bundle 'Markdown'
+"主题
 Bundle 'Zenburn'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'jellybeans.vim'
+Bundle 'hybrid.vim'
 Bundle 'jsbeautify'
 " 自动完成
 Bundle 'Valloric/YouCompleteMe'
-" python
-Bundle 'python.vim'
+
+"自动补全单引号，双引号等
+Bundle 'Raimondi/delimitMate'
 
 " non github repos ，非git的访问地址的，格式如下：  
 Bundle 'git://git.wincent.com/command-t.git'  
@@ -293,9 +304,6 @@ let NERDTreeShowHidden = 0
 let NERDTreeShowLineNumbers = 1
 " 使得按tab时打开新窗口
 map <Tab> i
-
-" 使得按tab时打开新窗口
-map <Tab> i
 "" 收藏文件,这里有空格的
 """cmap bm Bookmark 
 
@@ -309,7 +317,7 @@ set hlsearch
   
 "忽略大小写  
 set ignorecase  
-  
+
 "在查找时输入字符过程中就高亮显示匹配点。然后回车跳到该匹配点。  
 set incsearch     
   
@@ -318,24 +326,6 @@ set wrapscan
 
 "c++的自动补全
 "set completeopt = menu
-
-"自动补全括号
-
-:inoremap { {}<esc>i
-:inoremap } <c-r>=ClosePair('}')<cr>
-inoremap [ []<esc>i
-inoremap ( ()<esc>i
-inoremap " ""<esc>i
-"inoremap ' ''<esc>i
-
-function ClosePair(char)
-if getline('.')[col('.') - 1] == a:char
-    return "/<Right>"
-else
-    return a:char
-endif
-endf
-
 
 "在所有模式下都允许使用鼠标，还可以是n,v,i,c等
 set mouse=a  
@@ -372,9 +362,13 @@ if has('gui_running')
     set cursorline  
   
     " 编辑器配色  
-    colorscheme jellybeans  
+    "colorscheme jellybeans  
     "colorscheme distinguished  
-  
+    "set background=dark
+    "colorscheme solarized 
+    let g:hybrid_use_Xresources = 1
+    colorscheme hybrid
+
     if has("unix") && !has('gui_macvim')  
         set guifont=Courier\ 16\ Pitch\ 16  
         set guifontwide=YaHei\ Consolas\ Hybrid\ 16  
@@ -417,5 +411,18 @@ endif
 "You completed me
 let g:ycm_global_ycm_extra_conf='path'  "在.vimrc中加入这句
   
+" 语法
+Bundle 'Syntastic'
 "Syntastic设置
+let g:syntastic_error_symbol='>>'
+let g:syntastic_warning_symbol='>'
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_highlighting = 0
+"let g:syntastic_python_checker="flake8,pyflakes,pep8,pylint"
+let g:syntastic_python_checkers=['pyflakes']
+highlight SyntasticErrorSign guifg=white guibg=black
+
+" python fly check, 弥补syntastic只能打开和保存才检查语法的不足
+Bundle 'kevinw/pyflakes-vim'
+let g:pyflakes_use_quickfix = 0
 let g:syntastic_javascript_checkers=['jshint']
