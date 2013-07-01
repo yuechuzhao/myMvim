@@ -154,6 +154,8 @@ Bundle 'Raimondi/delimitMate'
 " non github repos ，非git的访问地址的，格式如下：  
 Bundle 'git://git.wincent.com/command-t.git'  
 
+Bundle 'JSON.vim'
+
 filetype plugin indent on     " required! 
 "  
 " Brief help  
@@ -323,6 +325,7 @@ set incsearch
   
 "设置查找到文件尾部后折返开头或查找到开头后折返尾部。  
 set wrapscan  
+set nowrap
 
 "c++的自动补全
 "set completeopt = menu
